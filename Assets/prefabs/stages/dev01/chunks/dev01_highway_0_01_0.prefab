@@ -1,0 +1,271 @@
+{
+  "RootObject": {
+    "__guid": "cb11b916-222e-4569-be57-e454402fa9e9",
+    "__version": 1,
+    "Flags": 0,
+    "Name": "dev01_highway_0_01_0",
+    "Position": "0,0,0",
+    "Rotation": "0,0,0,1",
+    "Scale": "1,1,1",
+    "Tags": "",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "NetworkInterpolation": true,
+    "NetworkOrphaned": 0,
+    "NetworkTransmit": true,
+    "OwnerTransfer": 1,
+    "Components": [
+      {
+        "__type": "Chunk",
+        "__guid": "ba4e9a96-93a7-4266-ba3c-685820db5e1c",
+        "__enabled": true,
+        "BBoxes": [
+          {
+            "Position": "-3072,0",
+            "Size": "6144,-4096"
+          }
+        ],
+        "Difficulty": 1,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "Weight": 1
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "d522c7a5-127c-462b-923e-f7ac9590de4d",
+        "__version": 1,
+        "Flags": 0,
+        "Name": "Model",
+        "Position": "0,-2048,0",
+        "Rotation": "0,0,0,1",
+        "Scale": "1,1,1",
+        "Tags": "world",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkInterpolation": true,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "3043e37d-2cdc-439e-8628-673499fdab93",
+            "__enabled": true,
+            "BodyGroups": 18446744073709551615,
+            "CreateAttachments": true,
+            "LodOverride": null,
+            "MaterialGroup": null,
+            "MaterialOverride": null,
+            "Materials": null,
+            "Model": "models/stages/dev01/chunks/highway01_01_0.vmdl",
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "Sandbox.ModelCollider",
+            "__guid": "1418cd6f-4a92-48bf-bc5c-ff682f5cba35",
+            "__enabled": true,
+            "ColliderFlags": 0,
+            "Elasticity": null,
+            "Friction": null,
+            "IsTrigger": false,
+            "Model": "models/stages/dev01/chunks/highway01_01_0.vmdl",
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "OnObjectTriggerEnter": null,
+            "OnObjectTriggerExit": null,
+            "OnTriggerEnter": null,
+            "OnTriggerExit": null,
+            "RollingResistance": null,
+            "Static": false,
+            "Surface": null,
+            "SurfaceVelocity": "0,0,0"
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "b7ac25cc-9dca-4805-837a-6f8d32f3162f",
+        "__version": 1,
+        "Flags": 0,
+        "Name": "TrafficNode_0_01",
+        "Position": "220.3507,6000,0",
+        "Rotation": "0,0,0,1",
+        "Scale": "1,1,1",
+        "Tags": "",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkInterpolation": true,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
+        "Components": [
+          {
+            "__type": "TrafficNode",
+            "__guid": "d49f65a6-3da1-4a7b-8c2f-6d675426604b",
+            "__enabled": true,
+            "FinalSpeedMultiplier": 1,
+            "LaneIndex": 0,
+            "NextNode": null,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "6372c1c8-fdc4-4c7e-b72a-7d59f545a236",
+        "__version": 1,
+        "Flags": 0,
+        "Name": "TrafficNode_1_01",
+        "Position": "476.2997,6000,0",
+        "Rotation": "0,0,0,1",
+        "Scale": "1,1,1",
+        "Tags": "",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkInterpolation": true,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
+        "Components": [
+          {
+            "__type": "TrafficNode",
+            "__guid": "d2f5cc2d-3e78-44fe-8c03-fc2b8a78bb8c",
+            "__enabled": true,
+            "FinalSpeedMultiplier": 1,
+            "LaneIndex": 0,
+            "NextNode": null,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "b8a9723b-c441-4b80-95b2-d80055d3597e",
+        "__version": 1,
+        "Flags": 0,
+        "Name": "TrafficNode_2_01",
+        "Position": "819.6493,6000,0",
+        "Rotation": "0,0,0,1",
+        "Scale": "1,1,1",
+        "Tags": "",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkInterpolation": true,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
+        "Components": [
+          {
+            "__type": "TrafficNode",
+            "__guid": "4a5ac85d-4841-4e2c-b953-3a4ce51c5fc1",
+            "__enabled": true,
+            "FinalSpeedMultiplier": 1,
+            "LaneIndex": 0,
+            "NextNode": null,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "2417e808-7a34-4a8b-83d0-69fd924a58fc",
+        "__version": 1,
+        "Flags": 0,
+        "Name": "ChunkPointA",
+        "Position": "0,-4096,0",
+        "Rotation": "0,0,0,1",
+        "Scale": "1,1,1",
+        "Tags": "",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkInterpolation": true,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
+        "Components": [
+          {
+            "__type": "ChunkPoint",
+            "__guid": "fb48f845-3e29-4f24-b048-2c65260a16cc",
+            "__enabled": true,
+            "IsWhitelist": false,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "SpecificChunkList": []
+          }
+        ],
+        "Children": []
+      }
+    ],
+    "__properties": {
+      "NetworkInterpolation": true,
+      "TimeScale": 1,
+      "WantsSystemScene": true,
+      "Metadata": {
+        "Chunk_Weight": "1",
+        "Chunk_BBounds": "-3072, -4096, 3072, 0 ",
+        "Chunk_Difficulty": "1"
+      },
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    },
+    "__variables": []
+  },
+  "ResourceVersion": 2,
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "__references": [],
+  "__version": 2
+}

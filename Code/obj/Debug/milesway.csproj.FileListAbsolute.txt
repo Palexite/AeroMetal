@@ -1,0 +1,6 @@
+C:\S&Box\Projects\milesway\Code\obj\Debug\milesway.csproj.AssemblyReference.cache
+C:\S&Box\Projects\milesway\Code\obj\Debug\rpswa.dswa.cache.json
+C:\S&Box\Projects\milesway\Code\obj\Debug\milesway.GeneratedMSBuildEditorConfig.editorconfig
+C:\S&Box\Projects\milesway\Code\obj\Debug\milesway.AssemblyInfoInputs.cache
+C:\S&Box\Projects\milesway\Code\obj\Debug\milesway.AssemblyInfo.cs
+C:\S&Box\Projects\milesway\Code\obj\Debug\milesway.csproj.CoreCompileInputs.cache
