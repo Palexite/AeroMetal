@@ -1,0 +1,25 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "Dev 01 Highway 01 01",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "dev01highway0101",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "facepunch.concrete_damaged#116217",
+        "facepunch.concrete_wall_bare_01#47058",
+        "facepunch.grass_mud_blend_01a#47043"
+      ],
+      "Mounts": null,
+      "IsStandaloneOnly": false,
+      "Metadata": {
+        "SingleAssetSource": "src/maps/stages/dev01/chunks/dev01_highway_01_01.vmap"
+      }
+    }
+  }
+}

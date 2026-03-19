@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("milesway.editor")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c798ba6eb020404740fcd5644d00f244c37c41ea")]
 [assembly: System.Reflection.AssemblyProductAttribute("milesway.editor")]
 [assembly: System.Reflection.AssemblyTitleAttribute("milesway.editor")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

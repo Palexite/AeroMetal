@@ -1,6 +1,5 @@
 using Sandbox;
 using Sandbox.Diagnostics;
-using Sandbox.game.utility;
 using Sandbox.Utility.BBox2D;
 using System.Runtime.ConstrainedExecution;
 
@@ -8,14 +7,12 @@ public sealed class Chunk : Component, ISceneMetadata
 {
 	[Property] public int Difficulty { get; set; } = 1;
 	[Property] public float Weight { get; set; } = 1;
-	[Property] public List<Rect> BBoxes { get; set; } = new List<Rect>();
+	[Property] public List<BBox> BBoxes { get; set; } = new List<BBox>();
 	
 
 	public ChunkPoint LastChunkPoint { get; set; }
 
 	private StageMain StageMain;
-
-	private StageSettings StageSettings;
 
 
 
@@ -31,12 +28,9 @@ public sealed class Chunk : Component, ISceneMetadata
 
 	public Dictionary<string, string> GetMetadata()
 	{
-		var str = Rect_Utils.RectListToString( BBoxes );
 		return new Dictionary<string, string>
 		{
-
 			{"Chunk_Weight", Weight.ToString() },
-			{"Chunk_BBounds", str},
 			{"Chunk_Difficulty",  Difficulty.ToString()}
 
 		};
@@ -46,7 +40,7 @@ public sealed class Chunk : Component, ISceneMetadata
 	// Checking to see if we're too far away from any player to the point where we should cull ourselves.
 	private void PlayerDistanceCheckFinal()
 	{
-		if (ClosestPlayerDistance > (StageSettings.ChunkGCDistance * StageSettings.ChunkGCDistance))
+		if (ClosestPlayerDistance > (StageMain.ChunkGCDistance * StageMain.ChunkGCDistance))
 		{
 
 			this.GameObject.Destroy();
@@ -89,8 +83,7 @@ public sealed class Chunk : Component, ISceneMetadata
 	}
 	protected override void OnStart()
 	{
-		StageMain = Scene.Directory.FindByName("StageMain").First().GetComponent<StageMain>();
-		StageSettings = Scene.Directory.FindByName( "StageSettings" ).First().GetComponent<StageSettings>();
+		StageMain = Scene.Directory.FindByName( "Scene Information" ).First().GetComponent<StageMain>();
 	}
 	protected override void OnUpdate()
 	{
@@ -106,7 +99,7 @@ public sealed class Chunk : Component, ISceneMetadata
 			{
 				Gizmo.Draw.LineThickness = 8f;
 				Gizmo.Draw.Color = Color.Yellow.WithAlpha( Gizmo.IsSelected ? 1f : 0.2f );
-				Gizmo.Draw.LineBBox( new BBox( new Vector3(bounds.BottomLeft.x, bounds.BottomLeft.y, 0 ), new Vector3( bounds.TopRight.x, bounds.TopRight.y, ChunkGOHeight ) ) );
+				Gizmo.Draw.LineBBox(bounds);
 			}
 
 		}
