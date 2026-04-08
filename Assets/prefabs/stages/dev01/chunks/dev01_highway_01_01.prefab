@@ -23,7 +23,7 @@
         "BBoxes": [
           {
             "Mins": "3072,0,4096",
-            "Maxs": "-3072,-4096,0"
+            "Maxs": "-3072,-4096,-4096"
           }
         ],
         "Difficulty": 1,
@@ -109,112 +109,10 @@
         "Children": []
       },
       {
-        "__guid": "b7ac25cc-9dca-4805-837a-6f8d32f3162f",
-        "__version": 2,
-        "Flags": 0,
-        "Name": "TrafficNode_0_01",
-        "Position": "220.3507,6000,0",
-        "Rotation": "0,0,0,1",
-        "Scale": "1,1,1",
-        "Tags": "",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkFlags": 0,
-        "NetworkOrphaned": 0,
-        "NetworkTransmit": true,
-        "OwnerTransfer": 1,
-        "Components": [
-          {
-            "__type": "TrafficNode",
-            "__guid": "d49f65a6-3da1-4a7b-8c2f-6d675426604b",
-            "__enabled": true,
-            "Flags": 0,
-            "FinalSpeedMultiplier": 1,
-            "LaneIndex": 0,
-            "NextNode": null,
-            "OnComponentDestroy": null,
-            "OnComponentDisabled": null,
-            "OnComponentEnabled": null,
-            "OnComponentFixedUpdate": null,
-            "OnComponentStart": null,
-            "OnComponentUpdate": null
-          }
-        ],
-        "Children": []
-      },
-      {
-        "__guid": "6372c1c8-fdc4-4c7e-b72a-7d59f545a236",
-        "__version": 2,
-        "Flags": 0,
-        "Name": "TrafficNode_1_01",
-        "Position": "476.2997,6000,0",
-        "Rotation": "0,0,0,1",
-        "Scale": "1,1,1",
-        "Tags": "",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkFlags": 0,
-        "NetworkOrphaned": 0,
-        "NetworkTransmit": true,
-        "OwnerTransfer": 1,
-        "Components": [
-          {
-            "__type": "TrafficNode",
-            "__guid": "d2f5cc2d-3e78-44fe-8c03-fc2b8a78bb8c",
-            "__enabled": true,
-            "Flags": 0,
-            "FinalSpeedMultiplier": 1,
-            "LaneIndex": 0,
-            "NextNode": null,
-            "OnComponentDestroy": null,
-            "OnComponentDisabled": null,
-            "OnComponentEnabled": null,
-            "OnComponentFixedUpdate": null,
-            "OnComponentStart": null,
-            "OnComponentUpdate": null
-          }
-        ],
-        "Children": []
-      },
-      {
-        "__guid": "b8a9723b-c441-4b80-95b2-d80055d3597e",
-        "__version": 2,
-        "Flags": 0,
-        "Name": "TrafficNode_2_01",
-        "Position": "819.6493,6000,0",
-        "Rotation": "0,0,0,1",
-        "Scale": "1,1,1",
-        "Tags": "",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkFlags": 0,
-        "NetworkOrphaned": 0,
-        "NetworkTransmit": true,
-        "OwnerTransfer": 1,
-        "Components": [
-          {
-            "__type": "TrafficNode",
-            "__guid": "4a5ac85d-4841-4e2c-b953-3a4ce51c5fc1",
-            "__enabled": true,
-            "Flags": 0,
-            "FinalSpeedMultiplier": 1,
-            "LaneIndex": 0,
-            "NextNode": null,
-            "OnComponentDestroy": null,
-            "OnComponentDisabled": null,
-            "OnComponentEnabled": null,
-            "OnComponentFixedUpdate": null,
-            "OnComponentStart": null,
-            "OnComponentUpdate": null
-          }
-        ],
-        "Children": []
-      },
-      {
         "__guid": "2417e808-7a34-4a8b-83d0-69fd924a58fc",
         "__version": 2,
         "Flags": 0,
-        "Name": "ChunkPointA",
+        "Name": "ChunkPoint",
         "Position": "0,-4096,0",
         "Rotation": "0,0,0,1",
         "Scale": "1,1,1",
@@ -239,6 +137,79 @@
             "OnComponentStart": null,
             "OnComponentUpdate": null,
             "SpecificChunkList": []
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "d20b8178-1ca6-4b22-8667-9882991e0dec",
+        "__version": 2,
+        "Flags": 0,
+        "Name": "LaneNodeA_1",
+        "Position": "256,-4096,0",
+        "Rotation": "0,0,0,1",
+        "Scale": "1,1,1",
+        "Tags": "",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkFlags": 0,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
+        "Components": [
+          {
+            "__type": "TrafficNode",
+            "__guid": "f58fc4d6-3c6f-4303-a806-236a70bca390",
+            "__enabled": true,
+            "Flags": 0,
+            "EnablePhysics": false,
+            "FinalSpeedMultiplier": 1,
+            "LaneIndex": 0,
+            "NextNode": null,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "e6627c7f-9b8f-4fd3-bb1d-466203b7d587",
+        "__version": 2,
+        "Flags": 0,
+        "Name": "LaneNodeA_2",
+        "Position": "256,0,0",
+        "Rotation": "0,0,0,1",
+        "Scale": "1,1,1",
+        "Tags": "",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkFlags": 0,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
+        "Components": [
+          {
+            "__type": "TrafficNode",
+            "__guid": "55f46e05-f33d-49fa-b3e6-fa95b5f5904f",
+            "__enabled": true,
+            "Flags": 0,
+            "EnablePhysics": false,
+            "FinalSpeedMultiplier": 1,
+            "LaneIndex": 0,
+            "NextNode": {
+              "_type": "gameobject",
+              "go": "d20b8178-1ca6-4b22-8667-9882991e0dec"
+            },
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null
           }
         ],
         "Children": []

@@ -5,16 +5,33 @@ using System.Runtime.ConstrainedExecution;
 
 public sealed class Chunk : Component, ISceneMetadata
 {
-	[Property] public int Difficulty { get; set; } = 1;
-	[Property] public float Weight { get; set; } = 1;
-	[Property] public List<BBox> BBoxes { get; set; } = new List<BBox>();
-	
 
+	/// <summary>
+	/// The difficulty of this chunk for the player to move across. This will scale it's weight by the difficulty scaling.
+	/// </summary>
+	[Property] public float Difficulty { get; set; } = 1;
+
+	/// <summary>
+	/// The likelyhood that this chunk will spawn over other chunks.
+	/// </summary>
+	[Property] public float Weight { get; set; } = 1;
+
+	/// <summary>
+	/// The BBoxes we are defining for this chunk in the case of generation.
+	/// </summary>
+	[Property] public List<BBox> BBoxes { get; set; } = new List<BBox>();
+
+	/// <summary>
+	/// The boundary instances that we own in the game.
+	/// </summary>
+
+	public IEnumerable<BBox> BBoxInstances;
 	public ChunkPoint LastChunkPoint { get; set; }
+	public IEnumerable<LaneComponent> LaneComponents { get; set; }
 
 	private StageMain StageMain;
 
-
+	private ChunkSystem ChunkSystem;
 
 
 	// Set to a high number so when checked against the first player in the index determining the closest distance, their value is guarenteed to override.
@@ -38,16 +55,31 @@ public sealed class Chunk : Component, ISceneMetadata
 	}
 
 	// Checking to see if we're too far away from any player to the point where we should cull ourselves.
+
+	protected override void OnStart()
+	{
+		StageMain = Scene.Directory.FindByName( "Scene Information" ).First().GetComponent<StageMain>();
+		ChunkSystem = Scene.Directory.FindByName( "ChunkSystem" ).First().GetComponent<ChunkSystem>();
+	}
+
 	private void PlayerDistanceCheckFinal()
 	{
 		if (ClosestPlayerDistance > (StageMain.ChunkGCDistance * StageMain.ChunkGCDistance))
 		{
 
 			this.GameObject.Destroy();
-
+			foreach ( var b in BBoxInstances ) {
+				ChunkSystem.ChunkBBoxes.Remove( b );
+			}
 		}
 	}
 
+
+	protected override void OnDestroy()
+	{
+		
+
+	}
 	// Running checks regarding the player's distance. This process takes multiple ticks and takes longer depending on the number of players.
 	private void PlayerDistanceCheck()
 	{
@@ -80,10 +112,6 @@ public sealed class Chunk : Component, ISceneMetadata
 	protected override void OnValidate()
 	{
 		ChunkGOHeight = this.GameObject.GetLocalBounds().Maxs.z.CeilToInt();
-	}
-	protected override void OnStart()
-	{
-		StageMain = Scene.Directory.FindByName( "Scene Information" ).First().GetComponent<StageMain>();
 	}
 	protected override void OnUpdate()
 	{

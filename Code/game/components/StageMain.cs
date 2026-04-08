@@ -6,7 +6,7 @@ public sealed class StageMain : Component
 {
 
 	[Property] public PrefabFile[] ChunkPrefabs { get; set; } = Array.Empty<PrefabFile>();
-	[Property] public PrefabFile[] StartingChunks { get; set; }= Array.Empty<PrefabFile>();
+	[Property] public PrefabFile[] StartingChunks { get; set; } = Array.Empty<PrefabFile>();
 
 	[Property] public string GameType { get; set; } = "GameType_DeathMatch";
 	[Property] public float DifficultyScale { get; set; } = 1.0f;
@@ -23,10 +23,9 @@ public sealed class StageMain : Component
 	public ChunkSystem ChunkSystem;
 	public IEnumerable<PlayerController> Players { get; set; }
 	 private FastTimer PlayerScanTimer { get; set; }
-	protected override void OnStart()
+	protected override async void OnStart()
 	{
-
-		//await GameTask.DelaySeconds(.1f );
+		await GameTask.DelaySeconds(.1f );
 		ChunkSystem = Scene.Directory.FindByName( "ChunkSystem" ).First().GetComponent<ChunkSystem>();
 		Log.Info( " Chunk System Located" );
 

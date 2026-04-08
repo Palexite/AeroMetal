@@ -5,11 +5,27 @@
       "Base Library/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "splinetools": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Base Library.dll": {}
         },
         "runtime": {
           "bin/placeholder/Base Library.dll": {}
+        }
+      },
+      "splinetools/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "Base Library": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/splinetools.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/splinetools.dll": {}
         }
       }
     }
@@ -17,13 +33,19 @@
   "libraries": {
     "Base Library/1.0.0": {
       "type": "project",
-      "path": "../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/code/Base Library.csproj",
-      "msbuildProject": "../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/code/Base Library.csproj"
+      "path": "../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/code/Base Library.csproj",
+      "msbuildProject": "../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/code/Base Library.csproj"
+    },
+    "splinetools/1.0.0": {
+      "type": "project",
+      "path": "../Libraries/facepunch.splinetools/Code/splinetools.csproj",
+      "msbuildProject": "../Libraries/facepunch.splinetools/Code/splinetools.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "Base Library >= 1.0.0"
+      "Base Library >= 1.0.0",
+      "splinetools >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -33,11 +55,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GithubRepos\\AeroMetal\\Code\\milesway.csproj",
+      "projectUniqueName": "C:\\Dev\\GameProjects\\AeroMetal\\Code\\milesway.csproj",
       "projectName": "milesway",
-      "projectPath": "C:\\GithubRepos\\AeroMetal\\Code\\milesway.csproj",
+      "projectPath": "C:\\Dev\\GameProjects\\AeroMetal\\Code\\milesway.csproj",
       "packagesPath": "C:\\Users\\peter\\.nuget\\packages\\",
-      "outputPath": "C:\\GithubRepos\\AeroMetal\\Code\\obj\\",
+      "outputPath": "C:\\Dev\\GameProjects\\AeroMetal\\Code\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -58,6 +80,9 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
+            "C:\\Dev\\GameProjects\\AeroMetal\\Libraries\\facepunch.splinetools\\Code\\splinetools.csproj": {
+              "projectPath": "C:\\Dev\\GameProjects\\AeroMetal\\Libraries\\facepunch.splinetools\\Code\\splinetools.csproj"
+            },
             "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\base\\code\\Base Library.csproj": {
               "projectPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\base\\code\\Base Library.csproj"
             }
@@ -90,7 +115,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

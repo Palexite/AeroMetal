@@ -7,7 +7,7 @@ public class PhysicsObject : Component, Component.ICollisionListener
 
 	}
 
-	public void OnCollisionStart(Collision Coll)
+	public virtual void OnCollisionStart(Collision Coll)
 	{
 
 	}

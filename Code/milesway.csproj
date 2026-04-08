@@ -37,6 +37,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="../Libraries/facepunch.splinetools/Code/splinetools.csproj" />
 		<ProjectReference Include="../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/code/Base Library.csproj" />
 	</ItemGroup>
 

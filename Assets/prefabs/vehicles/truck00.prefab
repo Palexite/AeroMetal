@@ -48,6 +48,8 @@
             "OnComponentStart": null,
             "OnComponentUpdate": null,
             "Radius": 400,
+            "ShadowBias": 0.0005,
+            "ShadowHardness": 0,
             "Shadows": true
           }
         ],
@@ -58,8 +60,8 @@
         "__version": 2,
         "Flags": 0,
         "Name": "wheel",
-        "Position": "-22.23554,27.7254,-27.32663",
-        "Rotation": "0.7071068,0,0,0.7071068",
+        "Position": "23.33355,-49.94464,-27.32663",
+        "Rotation": "0.0000001192093,-0.7071069,-0.7071069,0.0000001192093",
         "Scale": "1,1,1",
         "Tags": "",
         "Enabled": true,
@@ -111,9 +113,9 @@
             "BreakTorque": 0,
             "EnableCollision": false,
             "EnableSpinMotor": true,
-            "EnableSteering": false,
-            "EnableSteeringLimit": false,
-            "EnableSuspension": true,
+            "EnableSteering": true,
+            "EnableSteeringLimit": true,
+            "EnableSuspension": false,
             "EnableSuspensionLimit": true,
             "LocalFrame1": {
               "Position": "0,0,0",
@@ -126,7 +128,7 @@
               "Rotation": "0,0,0,0"
             },
             "MaxSpinTorque": 0,
-            "MaxSteeringTorque": 0,
+            "MaxSteeringTorque": 1000000,
             "OnBreak": null,
             "OnComponentDestroy": null,
             "OnComponentDisabled": null,
@@ -134,11 +136,11 @@
             "OnComponentFixedUpdate": null,
             "OnComponentStart": null,
             "OnComponentUpdate": null,
-            "SpinMotorSpeed": 0,
+            "SpinMotorSpeed": 5000000,
             "StartBroken": false,
-            "SteeringDampingRatio": 0,
-            "SteeringHertz": 10,
-            "SteeringLimits": "0,45",
+            "SteeringDampingRatio": 2,
+            "SteeringHertz": 30,
+            "SteeringLimits": "-180,180",
             "SuspensionDampingRatio": 0.1,
             "SuspensionHertz": 4,
             "SuspensionLimits": "7.142857,0",
@@ -202,6 +204,18 @@
             "Static": false,
             "Surface": null,
             "SurfaceVelocity": "0,0,0"
+          },
+          {
+            "__type": "Wheel",
+            "__guid": "dfa65972-6d18-4d70-948c-a628a44aabf1",
+            "__enabled": true,
+            "Flags": 0,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null
           }
         ],
         "Children": []
@@ -211,8 +225,8 @@
         "__version": 2,
         "Flags": 0,
         "Name": "wheel (1)",
-        "Position": "-22.23554,-49.94464,-27.32664",
-        "Rotation": "0.7071068,0,0,0.7071068",
+        "Position": "23.33352,27.72541,-27.32664",
+        "Rotation": "0.0000001192093,-0.7071069,-0.7071069,0.0000001192093",
         "Scale": "1,1,1",
         "Tags": "",
         "Enabled": true,
@@ -264,9 +278,9 @@
             "BreakTorque": 0,
             "EnableCollision": false,
             "EnableSpinMotor": true,
-            "EnableSteering": false,
-            "EnableSteeringLimit": false,
-            "EnableSuspension": true,
+            "EnableSteering": true,
+            "EnableSteeringLimit": true,
+            "EnableSuspension": false,
             "EnableSuspensionLimit": true,
             "LocalFrame1": {
               "Position": "0,0,0",
@@ -279,7 +293,7 @@
               "Rotation": "0,0,0,0"
             },
             "MaxSpinTorque": 0,
-            "MaxSteeringTorque": 0,
+            "MaxSteeringTorque": 1000000,
             "OnBreak": null,
             "OnComponentDestroy": null,
             "OnComponentDisabled": null,
@@ -287,11 +301,11 @@
             "OnComponentFixedUpdate": null,
             "OnComponentStart": null,
             "OnComponentUpdate": null,
-            "SpinMotorSpeed": 0,
+            "SpinMotorSpeed": 5000000,
             "StartBroken": false,
             "SteeringDampingRatio": 0,
             "SteeringHertz": 10,
-            "SteeringLimits": "0,45",
+            "SteeringLimits": "-180,180",
             "SuspensionDampingRatio": 0.1,
             "SuspensionHertz": 4,
             "SuspensionLimits": "7.142857,0",
@@ -355,6 +369,18 @@
             "Static": false,
             "Surface": null,
             "SurfaceVelocity": "0,0,0"
+          },
+          {
+            "__type": "Wheel",
+            "__guid": "2fa499ef-1498-479a-98a2-77bd76afbd16",
+            "__enabled": true,
+            "Flags": 0,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null
           }
         ],
         "Children": []
@@ -364,8 +390,8 @@
         "__version": 2,
         "Flags": 0,
         "Name": "wheel (2)",
-        "Position": "23.33353,27.72539,-27.32663",
-        "Rotation": "0.7071068,0,0,0.7071068",
+        "Position": "-22.23553,-49.94465,-27.32663",
+        "Rotation": "0.0000001192093,-0.7071069,-0.7071069,0.0000001192093",
         "Scale": "1,1,1",
         "Tags": "",
         "Enabled": true,
@@ -417,9 +443,9 @@
             "BreakTorque": 0,
             "EnableCollision": false,
             "EnableSpinMotor": true,
-            "EnableSteering": false,
-            "EnableSteeringLimit": false,
-            "EnableSuspension": true,
+            "EnableSteering": true,
+            "EnableSteeringLimit": true,
+            "EnableSuspension": false,
             "EnableSuspensionLimit": true,
             "LocalFrame1": {
               "Position": "0,0,0",
@@ -432,7 +458,7 @@
               "Rotation": "0,0,0,0"
             },
             "MaxSpinTorque": 0,
-            "MaxSteeringTorque": 0,
+            "MaxSteeringTorque": 1000000,
             "OnBreak": null,
             "OnComponentDestroy": null,
             "OnComponentDisabled": null,
@@ -440,11 +466,11 @@
             "OnComponentFixedUpdate": null,
             "OnComponentStart": null,
             "OnComponentUpdate": null,
-            "SpinMotorSpeed": 0,
+            "SpinMotorSpeed": 5000000,
             "StartBroken": false,
-            "SteeringDampingRatio": 0,
-            "SteeringHertz": 10,
-            "SteeringLimits": "0,45",
+            "SteeringDampingRatio": 2,
+            "SteeringHertz": 30,
+            "SteeringLimits": "-65,65",
             "SuspensionDampingRatio": 0.1,
             "SuspensionHertz": 4,
             "SuspensionLimits": "7.142857,0",
@@ -508,6 +534,18 @@
             "Static": false,
             "Surface": null,
             "SurfaceVelocity": "0,0,0"
+          },
+          {
+            "__type": "Wheel",
+            "__guid": "fcf796a0-3a62-4ef1-a3c2-90e6f228f781",
+            "__enabled": true,
+            "Flags": 0,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null
           }
         ],
         "Children": []
@@ -517,8 +555,8 @@
         "__version": 2,
         "Flags": 0,
         "Name": "wheel (3)",
-        "Position": "23.33352,-49.94465,-27.32664",
-        "Rotation": "0.7071068,0,0,0.7071068",
+        "Position": "-22.23555,27.7254,-27.32664",
+        "Rotation": "0.0000001192093,-0.7071069,-0.7071069,0.0000001192093",
         "Scale": "1,1,1",
         "Tags": "",
         "Enabled": true,
@@ -570,9 +608,9 @@
             "BreakTorque": 0,
             "EnableCollision": false,
             "EnableSpinMotor": true,
-            "EnableSteering": false,
-            "EnableSteeringLimit": false,
-            "EnableSuspension": true,
+            "EnableSteering": true,
+            "EnableSteeringLimit": true,
+            "EnableSuspension": false,
             "EnableSuspensionLimit": true,
             "LocalFrame1": {
               "Position": "0,0,0",
@@ -585,7 +623,7 @@
               "Rotation": "0,0,0,0"
             },
             "MaxSpinTorque": 0,
-            "MaxSteeringTorque": 0,
+            "MaxSteeringTorque": 1000000,
             "OnBreak": null,
             "OnComponentDestroy": null,
             "OnComponentDisabled": null,
@@ -593,11 +631,11 @@
             "OnComponentFixedUpdate": null,
             "OnComponentStart": null,
             "OnComponentUpdate": null,
-            "SpinMotorSpeed": 0,
+            "SpinMotorSpeed": 5000000,
             "StartBroken": false,
             "SteeringDampingRatio": 0,
             "SteeringHertz": 10,
-            "SteeringLimits": "0,45",
+            "SteeringLimits": "-180,180",
             "SuspensionDampingRatio": 0.1,
             "SuspensionHertz": 4,
             "SuspensionLimits": "7.142857,0",
@@ -661,6 +699,18 @@
             "Static": false,
             "Surface": null,
             "SurfaceVelocity": "0,0,0"
+          },
+          {
+            "__type": "Wheel",
+            "__guid": "46430b1e-b0fd-4699-9856-5e55b4b120c7",
+            "__enabled": true,
+            "Flags": 0,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null
           }
         ],
         "Children": []
@@ -670,8 +720,8 @@
         "__version": 2,
         "Flags": 0,
         "Name": "Base",
-        "Position": "0,0,0",
-        "Rotation": "0,0,0,1",
+        "Position": "1.097998,-22.21925,0.0000009536743",
+        "Rotation": "0,0,-1,0.0000001788139",
         "Scale": "1,1,1",
         "Tags": "",
         "Enabled": true,
@@ -736,7 +786,7 @@
           {
             "__type": "Sandbox.Rigidbody",
             "__guid": "2e7621be-1f27-4e39-8177-f21db862a6ee",
-            "__enabled": true,
+            "__enabled": false,
             "Flags": 0,
             "AngularDamping": 0,
             "EnableImpactDamage": true,
@@ -772,12 +822,32 @@
             "__guid": "f5a5c257-e2a8-431f-8d91-bb2f3f95e1c9",
             "__enabled": true,
             "Flags": 0,
+            "Acceleration": 1024,
+            "DrivingWheels": [
+              {
+                "_type": "component",
+                "component_id": "dfa65972-6d18-4d70-948c-a628a44aabf1",
+                "go": "e5944793-6741-4729-95d6-665db9ae8576",
+                "component_type": "Wheel"
+              },
+              {
+                "_type": "component",
+                "component_id": "fcf796a0-3a62-4ef1-a3c2-90e6f228f781",
+                "go": "7df47f57-e95c-4501-bedd-fe1a5a81faf8",
+                "component_type": "Wheel"
+              }
+            ],
+            "Health": 1024,
+            "Lane": null,
+            "MaxHealth": 1024,
+            "MaxSpeed": 1,
             "OnComponentDestroy": null,
             "OnComponentDisabled": null,
             "OnComponentEnabled": null,
             "OnComponentFixedUpdate": null,
             "OnComponentStart": null,
-            "OnComponentUpdate": null
+            "OnComponentUpdate": null,
+            "Traction": 1024
           }
         ],
         "Children": []
@@ -799,11 +869,7 @@
         "AgentMaxSlope": 40,
         "ExcludedBodies": "",
         "IncludedBodies": "",
-        "CustomBounds": false,
-        "Bounds": {
-          "Mins": "0,0,0",
-          "Maxs": "0,0,0"
-        }
+        "CustomBounds": false
       }
     },
     "__variables": []

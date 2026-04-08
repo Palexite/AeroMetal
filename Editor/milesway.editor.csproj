@@ -44,6 +44,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ActionGraph/Code/actiongraph.csproj" />
+		<ProjectReference Include="../Libraries/facepunch.splinetools/Editor/splinetools.editor.csproj" />
 		<ProjectReference Include="../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/Hammer/Code/hammer.csproj" />
 		<ProjectReference Include="../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/tools/Code/Base Editor Library.csproj" />
 		<ProjectReference Include="../Code/milesway.csproj" />

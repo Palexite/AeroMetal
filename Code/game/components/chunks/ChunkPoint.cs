@@ -2,9 +2,11 @@ using Sandbox;
 using Sandbox.Diagnostics;
 using Sandbox.Utility.BBox2D;
 using System;
+using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Net.Security;
 using System.Runtime.InteropServices;
+using static Sandbox.PhysicsContact;
 
 
 
@@ -28,6 +30,11 @@ public sealed class ChunkPoint : Component
 	/// 
 
 	public GameObject GeneratedChunk;
+
+	/// <summary>
+	/// The Chunk Prefab we have selected. This is then used to generate our chunk we are responsible for when the time comes. (e.g. the player is closer to us.)
+	/// </summary>
+	/// 
 
 	public PrefabFile SelectedChunkPrefab;
 
@@ -62,6 +69,8 @@ public sealed class ChunkPoint : Component
 	/// <summary>
 	/// Chunks that can be used without creating conflict with other chunks. (NOTE: This is unreliable until FinishedCollisionQuery is true and will contain unsafe chunks until it is.)
 	/// </summary>
+	/// 
+	private List<PrefabFile> FinalChunkOptions;
 
 	private List<PrefabFile> SafeChunks;
 
@@ -84,25 +93,29 @@ public sealed class ChunkPoint : Component
 		// Right now, we are just setting SafeChunks to a default value. These chunks may or may not be safe at this point. This list will get narrowed by ChunkCollisionQuery.
 
 
-		SafeChunks = StageMain.ChunkPrefabs.ToList<PrefabFile>();
-
-		if (SpecificChunkList.Length == 0)
+		if (!(SpecificChunkList.Length == 0))
 		{
 			if ( IsWhitelist )
 			{
-				SafeChunks = SpecificChunkList.ToList<PrefabFile>();
+				FinalChunkOptions = new List<PrefabFile>( SpecificChunkList );
 			}
-
 			else
 			{
 				foreach (var item in SpecificChunkList)
 				{
-					if (SafeChunks.Contains(item)) {
-						SafeChunks.Remove(item);
+					if ( FinalChunkOptions.Contains(item)) {
+						FinalChunkOptions.Remove(item);
 					}
 				}
 			}
 		}
+		else
+		{
+			FinalChunkOptions = new List<PrefabFile>( StageMain.ChunkPrefabs );
+			//StageMain.ChunkPrefabs.ToList<PrefabFile>();
+		}
+
+		SafeChunks = new List<PrefabFile>(FinalChunkOptions);
 	}
 
 
@@ -112,7 +125,8 @@ public sealed class ChunkPoint : Component
 
 	public void ChunkCollisionQuery()
 	{
-		var AvailableChunks = SafeChunks;
+		var AvailableChunks = FinalChunkOptions;
+		var SafeChunksResult = SafeChunks;
 		var finalQueryAmount = MaxCollisionQueriesPerFrame;
 
 		if ( (AvailableChunks.Count() - ChunkQueryIndex) < MaxCollisionQueriesPerFrame )
@@ -129,22 +143,32 @@ public sealed class ChunkPoint : Component
 			var PrefFile = AvailableChunks[i];
 			var Scene = PrefFile.GetScene();
 			var ChunkPoints = Scene.GetComponentsInChildren<ChunkPoint>();
-			var BBounds = Scene.GetComponent<Chunk>().BBoxes;
 
+			var BBounds = ChunkSystem.ChunkBBoxes;
 			foreach (var ChunkPoint in ChunkPoints )
 			{
-				var RayStruct = new Ray( this.WorldPosition, ChunkPoint.WorldRotation.Forward);
+				var rot1 = ChunkPoint.WorldRotation.Forward;
+
+
+				Rotation relativeRotation = Rotation.From(ChunkPoint.WorldRotation.Angles());
+
+				// Apply relative rotation in reference's local space
+				var newRot = this.WorldRotation * relativeRotation;
+
+				var RayStruct = new Ray( this.WorldPosition, newRot.Right);
+
+				DebugOverlay.Line( new Line( RayStruct.Position, RayStruct.Project( 10000 )), Color.Blue, 4 );
 				var PassedTest = true;
 				var HitDistance = 0f;
 
-				// TODO 12.20.2025: Check against all BBoxes (Rects)
 				foreach ( var Bounds in BBounds)
 				{
-
-					var IsHit = Bounds.Trace(RayStruct, 99999, out HitDistance);
+					Log.Info( "doing" );
+					DebugOverlay.Box( Bounds, Color.Yellow, 4 );
+					var IsHit = Bounds.Trace(RayStruct, 10000, out HitDistance);
 					if (IsHit) {
-						Log.Info("hit");
-						AvailableChunks.RemoveAt(i);
+						Log.Info( "Removing" );
+						SafeChunks.RemoveAt(i);
 						PassedTest = false;
 						break;
 					}
@@ -163,7 +187,6 @@ public sealed class ChunkPoint : Component
 		if ( AvailableChunks.Count() <= ChunkQueryIndex )
 		{
 			FinishedCollisionQuery = true;
-			Log.Info( SafeChunks );
 
 		}
 	}
@@ -173,7 +196,7 @@ public sealed class ChunkPoint : Component
 	/// </summary>
 	public void ChooseRandomValidChunk()
 	{
-	SelectedChunkPrefab = this.SafeChunks[ChunkSystem.ChunkRandom.Next( 0, this.SafeChunks.Count() - 1 )];
+		SelectedChunkPrefab = SafeChunks[ChunkSystem.ChunkRandom.Next( 0, SafeChunks.Count())];
 
 	}
 

@@ -3,7 +3,7 @@
     "Editor": {
       "commandName": "Executable",
       "executablePath": "../../../../../Program Files (x86)/Steam/steamapps/common/sbox/sbox-dev.exe",
-      "commandLineArgs": "-project \u0022C:\\S\u0026Box\\Projects\\milesway\\milesway.sbproj\u0022"
+      "commandLineArgs": "-project \u0022C:\\Dev\\GameProjects\\AeroMetal\\milesway.sbproj\u0022"
     }
   }
 }

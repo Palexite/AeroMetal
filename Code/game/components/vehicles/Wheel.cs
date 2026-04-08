@@ -2,7 +2,9 @@ using Sandbox;
 
 public class Wheel : VehiclePart
 {
-	[Property] bool Drive = true;
+	[RequireComponent] public Rigidbody Rigidbody { get; set; }
+
+	[RequireComponent] public WheelJoint WheelJoint { get; set; }
 	protected override void OnUpdate()
 	{
 

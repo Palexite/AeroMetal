@@ -28,6 +28,9 @@
       "Base Library/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "splinetools": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Base Library.dll": {}
         },
@@ -52,7 +55,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
-          "Base Library": "1.0.0"
+          "Base Library": "1.0.0",
+          "splinetools": "1.0.0"
         },
         "compile": {
           "bin/placeholder/milesway.dll": {}
@@ -86,29 +90,60 @@
         "runtime": {
           "bin/placeholder/shadergraph.dll": {}
         }
+      },
+      "splinetools/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "Base Library": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/splinetools.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/splinetools.dll": {}
+        }
+      },
+      "splinetools.editor/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "Base Editor Library": "1.0.0",
+          "actiongraph": "1.0.0",
+          "hammer": "1.0.0",
+          "moviemaker": "1.0.0",
+          "shadergraph": "1.0.0",
+          "splinetools": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/splinetools.editor.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/splinetools.editor.dll": {}
+        }
       }
     }
   },
   "libraries": {
     "actiongraph/1.0.0": {
       "type": "project",
-      "path": "../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ActionGraph/Code/actiongraph.csproj",
-      "msbuildProject": "../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ActionGraph/Code/actiongraph.csproj"
+      "path": "../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ActionGraph/Code/actiongraph.csproj",
+      "msbuildProject": "../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ActionGraph/Code/actiongraph.csproj"
     },
     "Base Editor Library/1.0.0": {
       "type": "project",
-      "path": "../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/tools/Code/Base Editor Library.csproj",
-      "msbuildProject": "../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/tools/Code/Base Editor Library.csproj"
+      "path": "../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/tools/Code/Base Editor Library.csproj",
+      "msbuildProject": "../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/tools/Code/Base Editor Library.csproj"
     },
     "Base Library/1.0.0": {
       "type": "project",
-      "path": "../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/code/Base Library.csproj",
-      "msbuildProject": "../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/code/Base Library.csproj"
+      "path": "../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/code/Base Library.csproj",
+      "msbuildProject": "../../../../Program Files (x86)/Steam/steamapps/common/sbox/addons/base/code/Base Library.csproj"
     },
     "hammer/1.0.0": {
       "type": "project",
-      "path": "../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/Hammer/Code/hammer.csproj",
-      "msbuildProject": "../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/Hammer/Code/hammer.csproj"
+      "path": "../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/Hammer/Code/hammer.csproj",
+      "msbuildProject": "../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/Hammer/Code/hammer.csproj"
     },
     "milesway/1.0.0": {
       "type": "project",
@@ -117,13 +152,23 @@
     },
     "moviemaker/1.0.0": {
       "type": "project",
-      "path": "../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/MovieMaker/Code/moviemaker.csproj",
-      "msbuildProject": "../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/MovieMaker/Code/moviemaker.csproj"
+      "path": "../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/MovieMaker/Code/moviemaker.csproj",
+      "msbuildProject": "../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/MovieMaker/Code/moviemaker.csproj"
     },
     "shadergraph/1.0.0": {
       "type": "project",
-      "path": "../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ShaderGraph/Code/shadergraph.csproj",
-      "msbuildProject": "../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ShaderGraph/Code/shadergraph.csproj"
+      "path": "../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ShaderGraph/Code/shadergraph.csproj",
+      "msbuildProject": "../../../../Program Files (x86)/Steam/steamapps/common/sbox/editor/ShaderGraph/Code/shadergraph.csproj"
+    },
+    "splinetools/1.0.0": {
+      "type": "project",
+      "path": "../Libraries/facepunch.splinetools/Code/splinetools.csproj",
+      "msbuildProject": "../Libraries/facepunch.splinetools/Code/splinetools.csproj"
+    },
+    "splinetools.editor/1.0.0": {
+      "type": "project",
+      "path": "../Libraries/facepunch.splinetools/Editor/splinetools.editor.csproj",
+      "msbuildProject": "../Libraries/facepunch.splinetools/Editor/splinetools.editor.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -133,7 +178,8 @@
       "hammer >= 1.0.0",
       "milesway >= 1.0.0",
       "moviemaker >= 1.0.0",
-      "shadergraph >= 1.0.0"
+      "shadergraph >= 1.0.0",
+      "splinetools.editor >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -143,11 +189,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GithubRepos\\AeroMetal\\Editor\\milesway.editor.csproj",
+      "projectUniqueName": "C:\\Dev\\GameProjects\\AeroMetal\\Editor\\milesway.editor.csproj",
       "projectName": "milesway.editor",
-      "projectPath": "C:\\GithubRepos\\AeroMetal\\Editor\\milesway.editor.csproj",
+      "projectPath": "C:\\Dev\\GameProjects\\AeroMetal\\Editor\\milesway.editor.csproj",
       "packagesPath": "C:\\Users\\peter\\.nuget\\packages\\",
-      "outputPath": "C:\\GithubRepos\\AeroMetal\\Editor\\obj\\",
+      "outputPath": "C:\\Dev\\GameProjects\\AeroMetal\\Editor\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -168,8 +214,11 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\GithubRepos\\AeroMetal\\Code\\milesway.csproj": {
-              "projectPath": "C:\\GithubRepos\\AeroMetal\\Code\\milesway.csproj"
+            "C:\\Dev\\GameProjects\\AeroMetal\\Code\\milesway.csproj": {
+              "projectPath": "C:\\Dev\\GameProjects\\AeroMetal\\Code\\milesway.csproj"
+            },
+            "C:\\Dev\\GameProjects\\AeroMetal\\Libraries\\facepunch.splinetools\\Editor\\splinetools.editor.csproj": {
+              "projectPath": "C:\\Dev\\GameProjects\\AeroMetal\\Libraries\\facepunch.splinetools\\Editor\\splinetools.editor.csproj"
             },
             "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\tools\\Code\\Base Editor Library.csproj": {
               "projectPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\tools\\Code\\Base Editor Library.csproj"
@@ -215,7 +264,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -492,5 +541,16 @@
         }
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1108",
+      "level": "Error",
+      "message": "Cycle detected. \r\n  milesway.editor -> milesway -> Base Library -> splinetools.",
+      "libraryId": "splinetools",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
 }
