@@ -13,19 +13,21 @@ public class Vehicle : PhysicsObject, IMortal, IRecycle, Component.ICollisionLis
 	[RequireComponent] public ModelRenderer ModelRenderer { get; set; }
 
 
-	[Property] float Health = 1024f;
+	[Property, Group("Stats")] float Health = 1024f;
 
-	[Property] float MaxHealth = 1024f;
+	[Property, Group( "Stats" )] float MaxHealth = 1024f;
 
-	[Property] float MaxSpeed = 512f;
+	[Property, Group( "Stats" )] float MaxSpeed = 512f;
 
-	[Property] float Acceleration = 256f;
+	[Property, Group( "Stats" )] float Acceleration = 256f;
 
-	[Property] float Traction = 1f;
+	[Property, Group( "Stats" )] float Traction = 1f;
 
-	[Property] public List<Wheel> DrivingWheels;
+	[Property, Group( "References" )] public List<Wheel> DrivingWheels;
 
-	[Property] public LaneComponent Lane;
+	[Property, Group( "References" )] public LaneComponent Lane;
+
+	[Property, Group( "Identity" )] public string Category = "Default";
 
 	public bool IsAccelerating = false;
 
@@ -33,15 +35,15 @@ public class Vehicle : PhysicsObject, IMortal, IRecycle, Component.ICollisionLis
 
 	public bool IsBreaking = false;
 
-	public float CurrentSpeed = 0f;
+	public float CurrentSpeed = 45f;
+
 
 
 	private bool IsDormant = false;
 
-	private float CurrentSplineDistance = 0f;
+	public float CurrentSplineDistance = 0f;
 
 	private int TravelDirection = 1;
-
 
 	private static HostStats HostStats;
 
@@ -57,10 +59,18 @@ public class Vehicle : PhysicsObject, IMortal, IRecycle, Component.ICollisionLis
 	}
 	protected override void OnUpdate()
 	{
-		//Move( 500 );
-		//SteerTowardPos( new Vector3( 256, -1024, 0 ) );
-		CalculateMoveTowardSpline();
-		LaneUpdate();
+			if ( Lane.GetDistanceToClosestPos( this.WorldPosition, false ) < 128 * 128 )
+			{
+				MoveDormantAcrossLane();
+				DebugOverlay.Line( WorldPosition, WorldPosition + Vector3.Up * 512 );
+			}
+			else
+			{
+
+				MoveDormantTowardLane();
+			}
+			//MoveDormantAcrossLane();
+			LaneUpdate();
 
 	}
 
@@ -69,7 +79,6 @@ public class Vehicle : PhysicsObject, IMortal, IRecycle, Component.ICollisionLis
 		var Spline = Lane.Spline.Spline;
 		if ( Spline.Length - 10 <= CurrentSplineDistance )
 		{
-			Log.Info( "LaneEnd" );
 			OnEndOfLane();
 		}
 
@@ -134,54 +143,59 @@ public class Vehicle : PhysicsObject, IMortal, IRecycle, Component.ICollisionLis
 
 	}
 
-	private void SearchForNewLane()
+	private LaneComponent SearchForAvailableRoute()
 	{
-
-		var myPos = this.WorldPosition;
-
-		
-
+		// For now, just return a random  available route of our lane
+		return Lane.Routes[TrafficSystem.TrafficRandom.Next(0, Lane.Routes.Count() - 1)];
 	}
 
 	/// <summary>
-	/// Moves the Vehicle cheaply to this target speed. Negative values make it move in reverse. In this state, it ignores physical forces unless they are big enough to deter the vehicle.
+	/// Moves the Vehicle with this speed. Negative values make it move in reverse. In this state, it ignores physical forces.
 	/// </summary>
 	/// 
 
 	public void MoveDormant( float Speed )
 	{
-		this.WorldPosition += this.WorldRotation.Left * (Speed * 0.0001f);
+		this.WorldPosition += this.WorldRotation.Left * (Speed * Time.Delta);
 	}
 
 
 
 
-	// Thanks Bop32 for this method. Exactly what I needed with some improvisations.
-	public void CalculateMoveTowardSpline()
+	// Thanks Bop32 for code example.
+	public void MoveDormantAcrossLane()
 	{
 		var splinePath = Lane.Spline;
 		Spline spline = splinePath.Spline;
 
-		float frameDistanceDelta = Time.Delta * 500f * TravelDirection;
+		float frameDistanceDelta = Time.Delta * 1000f * TravelDirection;
 		float nextSplineDistance = CurrentSplineDistance + frameDistanceDelta;
 
 		Spline.Sample currentSample = spline.SampleAtDistance( nextSplineDistance );
-		Spline.Sample lookAheadSample = spline.SampleAtDistance( nextSplineDistance + 15 );
-
-		Vector3 travelDirectionVector = (lookAheadSample.Position - currentSample.Position).Normal;
-
-		if ( travelDirectionVector == Vector3.Zero ) return;
 
 		CurrentSplineDistance = nextSplineDistance;
 
-		Rotation targetRotation = Rotation.LookAt( travelDirectionVector, Vector3.Up );
-
-		DebugOverlay.Line( WorldPosition, WorldPosition + travelDirectionVector * 500, Color.Orange );
-
+		WorldRotation = Lane.GetRotationAtDistance( nextSplineDistance, 15 );
+		WorldPosition = (currentSample.Position + splinePath.WorldPosition).RotateAround( splinePath.WorldPosition, splinePath.WorldRotation ) + new Vector3(0, 0, 32);
 		
-		WorldRotation = Rotation.Difference(Rotation.FromYaw(90), targetRotation );
-		WorldPosition = currentSample.Position + splinePath.WorldPosition;
-		
+	}
+
+	public void MoveDormantTowardLane()
+	{
+		var splinePath = Lane.Spline;
+		Spline spline = splinePath.Spline;
+
+		var CurPos = this.WorldPosition;
+		var Sample = spline.SampleAtClosestPosition((this.WorldPosition - Lane.WorldPosition ).RotateAround( Vector3.Zero, Lane.WorldRotation ));
+
+		var FinalSamplePos = Lane.GetAbsoluteSamplePosition(Sample);
+
+		var Rot = MathExtended.GetRotationBetweenVectors( CurPos, FinalSamplePos );
+
+		SteerDormant( Rotation.Difference( this.WorldRotation, Rot ).Yaw() );
+		MoveDormant( CurrentSpeed );
+
+
 	}
 	/// <summary>
 	/// Called when the vehicle reaches the end of it's current Lane.
@@ -192,56 +206,19 @@ public class Vehicle : PhysicsObject, IMortal, IRecycle, Component.ICollisionLis
 		// There is no where to go, likely because it is either a dead-end or a succeeding chunk that resolves the lane has not been generated.
 		//	Instead of tipping over into the endless void, just die.
 		if ( Lane.ResolvingChunkPoint == null ||  Lane.Routes.Count() == 0) {
-			DestroyGameObject();
-		}
-
-	}
-
-
-
-	/*
-	 * I can't get this to work, I'll leave this out for now.
-	 * 
-	public void CalculateMoveTowardSpline()
-	{
-		RigidBody.PhysicsBody.MotionEnabled = false;
-		if ( CurrentLane.IsValid )
+			this.GameObject.Root.Destroy();
+		} else
 		{
-			var MyPos = this.WorldPosition;
-
-			var LaneSpline = CurrentLane.Spline;
-
-			var Sample = LaneSpline.Spline.SampleAtClosestPosition( this.WorldPosition );
-			var DistSample = LaneSpline.Spline.SampleAtDistance( Sample.Distance + 64 );
-
-			var Pos = DistSample.Position;
-
-
-			var PosOffset =  (Pos + LaneSpline.WorldPosition) - MyPos;
-
-			//if ( PosOffset.LengthSquared < 0.0001f )
-			//return;
-
-			var LookAtRot = Rotation.LookAt( PosOffset.Normal, Sample.Up );
-			var NewRot = Rotation.FromYaw( LookAtRot.Yaw() - 90 );
-
-			DebugOverlay.Line( this.WorldPosition, this.WorldPosition + NewRot.Left * 1000, Color.Blue );
-			if ( NewRot.Yaw() != 0f )
-			{
-				this.WorldRotation = NewRot;
-			}
-
-			this.WorldPosition += LookAtRot.Forward * 1;
-
-			DebugOverlay.Line( this.WorldPosition, this.WorldPosition + (Vector3.Up * 512), Color.Yellow );
-			DebugOverlay.Line( LaneSpline.WorldPosition + Sample.Position, LaneSpline.WorldPosition + Sample.Position + (Vector3.Up * 128), Color.Green );
-			DebugOverlay.Line( LaneSpline.WorldPosition + DistSample.Position, LaneSpline.WorldPosition + DistSample.Position + (Vector3.Up * 128), Color.Red );
+			this.Lane = SearchForAvailableRoute();
+			Log.Info( this.Lane.Routes );
+			this.CurrentSplineDistance = 0;
 		}
 
 	}
-	*/
+
 	public void Steer( float Steer )
 	{
+		if (!IsDormant)
 		foreach ( var Wheel in DrivingWheels )
 		{
 			Wheel.WheelJoint.TargetSteeringAngle = Steer;
@@ -255,7 +232,7 @@ public class Vehicle : PhysicsObject, IMortal, IRecycle, Component.ICollisionLis
 			Wheel.WheelJoint.TargetSteeringAngle = Steer;
 		}
 
-		this.WorldRotation *= Rotation.FromYaw(Steer);
+		this.WorldRotation *= Rotation.FromYaw(Steer) * 0.01f;
 
 	}
 

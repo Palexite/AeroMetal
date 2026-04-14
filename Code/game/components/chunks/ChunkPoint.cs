@@ -163,11 +163,9 @@ public sealed class ChunkPoint : Component
 
 				foreach ( var Bounds in BBounds)
 				{
-					Log.Info( "doing" );
 					DebugOverlay.Box( Bounds, Color.Yellow, 4 );
 					var IsHit = Bounds.Trace(RayStruct, 10000, out HitDistance);
 					if (IsHit) {
-						Log.Info( "Removing" );
 						SafeChunks.RemoveAt(i);
 						PassedTest = false;
 						break;

@@ -27,7 +27,15 @@ public sealed class Chunk : Component, ISceneMetadata
 
 	public IEnumerable<BBox> BBoxInstances;
 	public ChunkPoint LastChunkPoint { get; set; }
-	public IEnumerable<LaneComponent> LaneComponents { get; set; }
+
+	/// <summary>
+	/// References to all the chunk points in this Chunk. Needs to be filled in manually for faster lookup times. This will payoff in the long-run.
+	/// </summary>
+	[Property, Group("References")]
+	public LaneComponent[] LaneComponents { get; set; }
+
+	[Property, Group( "References" )]
+	public ChunkPoint[] ChunkPoints { get; set; }
 
 	private StageMain StageMain;
 

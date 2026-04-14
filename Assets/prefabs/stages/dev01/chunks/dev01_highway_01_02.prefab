@@ -26,7 +26,35 @@
             "Maxs": "-3072,-6644,-4096"
           }
         ],
+        "ChunkPoints": [
+          {
+            "_type": "component",
+            "component_id": "fb48f845-3e29-4f24-b048-2c65260a16cc",
+            "go": "2417e808-7a34-4a8b-83d0-69fd924a58fc",
+            "component_type": "ChunkPoint"
+          }
+        ],
         "Difficulty": 1,
+        "LaneComponents": [
+          {
+            "_type": "component",
+            "component_id": "b652f798-61dc-48bf-939f-63dcea68503c",
+            "go": "e85b6c86-3fd5-427f-aa67-6f2598aea3e0",
+            "component_type": "LaneComponent"
+          },
+          {
+            "_type": "component",
+            "component_id": "421be5f2-f0d9-4ec6-8737-9e824fce5f16",
+            "go": "7f5eb647-b370-41c0-9b3d-90e935fffebd",
+            "component_type": "LaneComponent"
+          },
+          {
+            "_type": "component",
+            "component_id": "89c93cde-3a15-4c02-8538-44ca6a9f67fd",
+            "go": "76e53330-4277-468b-94dc-c895a680bb2c",
+            "component_type": "LaneComponent"
+          }
+        ],
         "OnComponentDestroy": null,
         "OnComponentDisabled": null,
         "OnComponentEnabled": null,
@@ -142,12 +170,12 @@
         "Children": []
       },
       {
-        "__guid": "05ba4cc8-29c4-4edb-880b-c1c8d4c88b28",
+        "__guid": "e85b6c86-3fd5-427f-aa67-6f2598aea3e0",
         "__version": 2,
         "Flags": 0,
-        "Name": "Lane",
-        "Position": "-856.4753,1.559103,13.61826",
-        "Rotation": "0,0,0,1",
+        "Name": "Lane3",
+        "Position": "247.8231,0,0.03860572",
+        "Rotation": "-0,0,-1,-0.00000004371139",
         "Scale": "1,1,1",
         "Tags": "",
         "Enabled": true,
@@ -159,26 +187,34 @@
         "Components": [
           {
             "__type": "LaneComponent",
-            "__guid": "ef3231e0-d94f-4f99-8430-1fe84cd4cca1",
+            "__guid": "b652f798-61dc-48bf-939f-63dcea68503c",
             "__enabled": true,
             "Flags": 0,
-            "CanSpawnVehicles": false,
-            "IsWhitelist": false,
+            "CanSpawnVehicles": true,
+            "IsStartingRoute": true,
+            "LaneIndex": 2,
             "OnComponentDestroy": null,
             "OnComponentDisabled": null,
             "OnComponentEnabled": null,
             "OnComponentFixedUpdate": null,
             "OnComponentStart": null,
             "OnComponentUpdate": null,
-            "ResolvingChunkPoint": null,
+            "ResolvingChunkPoint": {
+              "_type": "component",
+              "component_id": "fb48f845-3e29-4f24-b048-2c65260a16cc",
+              "go": "2417e808-7a34-4a8b-83d0-69fd924a58fc",
+              "component_type": "ChunkPoint"
+            },
             "Routes": [],
+            "SpawnListIsWhitelist": false,
             "SpeedAcceleration": 0,
             "SpeedMultiplier": 0,
-            "Vehicles": []
+            "VehiclesOnLane": [],
+            "VehicleSpecialSpawnList": []
           },
           {
             "__type": "Sandbox.SplineComponent",
-            "__guid": "41d41f32-98e4-4cc8-903e-141f9eb84a87",
+            "__guid": "b79367ef-53cf-42d3-894f-540b439918d9",
             "__enabled": true,
             "Flags": 0,
             "OnComponentDestroy": null,
@@ -191,26 +227,174 @@
               "Points": [
                 {
                   "Pos": "0,0,0",
-                  "In": "0,0,0",
-                  "Out": "-0,-0,-0",
+                  "In": "-0.0000000001305125,-44.62681,0",
+                  "Out": "0.0000000000660436,22.58263,0",
+                  "Mode": "Split"
+                },
+                {
+                  "Pos": "792.3074,2676.769,0",
+                  "In": "-839.5941,-963.8169,0",
+                  "Out": "819.5752,940.8362,0",
+                  "Mode": "Split"
+                },
+                {
+                  "Pos": "3318.627,3930.107,0",
+                  "In": "0.1977539,-98.63477,0",
+                  "Out": "-0.4004498,199.6787,0",
+                  "Mode": "Split"
+                }
+              ]
+            }
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "7f5eb647-b370-41c0-9b3d-90e935fffebd",
+        "__version": 2,
+        "Flags": 0,
+        "Name": "Lane2",
+        "Position": "500.9409,0,0.03860572",
+        "Rotation": "-0,0,-1,-0.00000004371139",
+        "Scale": "1,1,1",
+        "Tags": "",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkFlags": 0,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
+        "Components": [
+          {
+            "__type": "LaneComponent",
+            "__guid": "421be5f2-f0d9-4ec6-8737-9e824fce5f16",
+            "__enabled": true,
+            "Flags": 0,
+            "CanSpawnVehicles": true,
+            "IsStartingRoute": true,
+            "LaneIndex": 1,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "ResolvingChunkPoint": {
+              "_type": "component",
+              "component_id": "fb48f845-3e29-4f24-b048-2c65260a16cc",
+              "go": "2417e808-7a34-4a8b-83d0-69fd924a58fc",
+              "component_type": "ChunkPoint"
+            },
+            "Routes": [],
+            "SpawnListIsWhitelist": false,
+            "SpeedAcceleration": 0,
+            "SpeedMultiplier": 0,
+            "VehiclesOnLane": [],
+            "VehicleSpecialSpawnList": []
+          },
+          {
+            "__type": "Sandbox.SplineComponent",
+            "__guid": "ce3a5e19-04db-44ff-ae54-ec07c1b21864",
+            "__enabled": true,
+            "Flags": 0,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "Spline": {
+              "Points": [
+                {
+                  "Pos": "0,0,0",
+                  "In": "-595.672,-703.7328,-0",
+                  "Out": "271.2292,320.4328,0",
+                  "Mode": "Split"
+                },
+                {
+                  "Pos": "664.5516,2610.877,0",
+                  "In": "-753.1775,-887.6603,0",
+                  "Out": "900.9468,1061.814,0",
+                  "Mode": "Split"
+                },
+                {
+                  "Pos": "3574.032,4222.396,0",
+                  "In": "0.2180176,-8.655273,0",
+                  "Out": "-0.4004498,15.89084,0",
+                  "Mode": "Split"
+                }
+              ]
+            }
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "76e53330-4277-468b-94dc-c895a680bb2c",
+        "__version": 2,
+        "Flags": 0,
+        "Name": "Lane1",
+        "Position": "767.5328,0,0.03860572",
+        "Rotation": "-0,0,-1,-0.00000004371139",
+        "Scale": "1,1,1",
+        "Tags": "",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkFlags": 0,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
+        "Components": [
+          {
+            "__type": "LaneComponent",
+            "__guid": "89c93cde-3a15-4c02-8538-44ca6a9f67fd",
+            "__enabled": true,
+            "Flags": 0,
+            "CanSpawnVehicles": false,
+            "IsStartingRoute": true,
+            "LaneIndex": 0,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "ResolvingChunkPoint": {
+              "_type": "component",
+              "component_id": "fb48f845-3e29-4f24-b048-2c65260a16cc",
+              "go": "2417e808-7a34-4a8b-83d0-69fd924a58fc",
+              "component_type": "ChunkPoint"
+            },
+            "Routes": [],
+            "SpawnListIsWhitelist": false,
+            "SpeedAcceleration": 0,
+            "SpeedMultiplier": 0,
+            "VehiclesOnLane": [],
+            "VehicleSpecialSpawnList": []
+          },
+          {
+            "__type": "Sandbox.SplineComponent",
+            "__guid": "8c129f7b-2aa2-4411-a4a3-03cbf91c6eff",
+            "__enabled": true,
+            "Flags": 0,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "Spline": {
+              "Points": [
+                {
+                  "Pos": "0,0,0",
+                  "In": "-106.6465,-4540.756,-0",
+                  "Out": "106.6465,4540.756,0",
                   "Mode": "Mirrored"
                 },
                 {
-                  "Pos": "-22.25381,-252.4495,0",
-                  "In": "7.235321,72.05433,-0",
-                  "Out": "-7.235321,-72.05433,0",
-                  "Mode": "Mirrored"
-                },
-                {
-                  "Pos": "-339.4207,-1715.835,0",
-                  "In": "287.0516,515.84,0",
-                  "Out": "-287.0516,-515.84,-0",
-                  "Mode": "Mirrored"
-                },
-                {
-                  "Pos": "-2383.9,-2793.227,0",
-                  "In": "333.4225,-347.7958,0",
-                  "Out": "-333.4225,347.7958,-0",
+                  "Pos": "3836.878,4475.587,0",
+                  "In": "-176.6186,-73.64722,-0",
+                  "Out": "176.6186,73.64722,0",
                   "Mode": "Mirrored"
                 }
               ]
